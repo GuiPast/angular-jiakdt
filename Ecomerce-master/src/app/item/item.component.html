@@ -1,0 +1,22 @@
+
+<button (click)="editItem(item)">✏️</button><br>
+<img [src]="item.img" [alt]="item.description">
+
+<h2>{{ item.name }}</h2>
+
+<p *ngIf="!item.editable" (click)="isEditable(item)">{{ item.description }}</p>
+<input id='desc' *ngIf="item.editable" (keydown.enter)= "isNotEditable(item)" 
+    [(ngModel)] = "item.description" (ngModelChange)="updateItem(item)"><br>
+
+<button [disabled] = "item.quantity === 0" (click)="decreaseQuantity(item)">-</button>
+
+<input [(ngModel)]="item.quantity" (ngModelChange)="decreaseStock($event,item)">
+
+<button [disabled] = "item.stockAux === 0" (click)="incrementQuantity(item)">+</button><br>
+<p *ngIf="item.stockAux > 0; else elseBlock" class= 'stock'>{{ item.stockAux }} in stock</p>
+
+<p *ngIf="item.stockAux === 0" class='outOfStock'>out of stock</p>
+
+<p class='b'>{{ item.price |currency:'EUR' }}</p>
+<button id="delete" (click)="deleteItem(item)">🚮</button><br>
+<button (click)="addToCart(item)">Add to cart</button>

@@ -1,0 +1,19 @@
+
+    <div class="col-25">
+        <div class="container">
+            <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> 
+                <b>{{ totalQuantity() }}</b></span></h4>
+            <ul>
+                <li *ngFor="let item of cart">
+                    
+                    <p class="price"> <a href="#">{{item.item.name}}</a>|||Quantity: {{item.item.quantity}} 
+                        |||Price: {{item.item.price | currency:'EUR'}}
+                    </p>
+                </li>
+            </ul>
+            <hr>
+                <p>Total <span class="price" style="color:black">{{ totalPrice() }}
+                    </span>
+            </p>
+        </div>
+    </div>

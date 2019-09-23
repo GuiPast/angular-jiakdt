@@ -1,0 +1,13 @@
+<nav> {{ myItem | total:'stock' }} items in stock 
+    <button (click)="shoppingCart()"><img src="" alt="">{{totalQuantity}}</button>
+</nav>
+<app-add-item (add)="addItem($event)"></app-add-item>
+<ul>
+    <li *ngFor="let item of myItem" [class]="item.selected ? 'selected' : 'notSelected'" 
+    (mouseenter) ="mouseEnter($event,item)" (mouseleave) ="mouseLeave($event,item)">
+
+        <app-item [item]="item" (deleteItemEmitter)="deleteItem($event)" 
+            (updateItemEmitter)="updateItem($event)" (editItemEmitter)= "editItem($event)" 
+            (addToCartEmitter)="addToCart($event,item)"></app-item >
+    </li>
+</ul>

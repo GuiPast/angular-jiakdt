@@ -1,0 +1,26 @@
+<button (click)="onClickOpenForm()">Add</button>
+<button (click)="onClickCloseForm()" [hidden]="!openForm">Close</button>
+<form [hidden]="!openForm">
+  <div >
+      <input type="text" [(ngModel)]="item.name" placeholder="Name" name="name">
+  </div>
+
+  <div >
+      <input type="text" [(ngModel)]="item.description" placeholder="Description" name="description">
+  </div>
+
+  <div >
+      <input type="number" [(ngModel)]="item.stock" placeholder="Stock Number" name="stock">
+  </div>
+
+  <div >
+      <input type="number" [(ngModel)]="item.price" placeholder="price" name="price">
+  </div>  
+  
+  <div >
+      <input type="text" [(ngModel)]="item.img" placeholder="Img url" name="img">
+  </div>  
+  
+  <button type="submit" (click)=onClickSubmit()>Submit</button>
+
+</form>
